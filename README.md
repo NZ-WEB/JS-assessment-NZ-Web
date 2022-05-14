@@ -1,6 +1,7 @@
 [![Build Status](https://travis-ci.org/rmurphey/js-assessment.svg?branch=master)](https://travis-ci.org/rmurphey/js-assessment)
 
 # A test-driven JS assessment
+## Undergoing testing - NZ-WEB | Eugene Fedoseev
 
 This repo includes a set of tests that can be used to assess the skills of
 a candidate for a JavaScript position, or to evaluate and improve one's own
