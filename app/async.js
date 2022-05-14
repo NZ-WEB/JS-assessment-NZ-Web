@@ -1,19 +1,21 @@
-exports = (typeof window === 'undefined') ? global : window;
+/* global $ */
+exports = typeof window === 'undefined' ? global : window;
 
 exports.asyncAnswers = {
-  async : function(value) {
+  async: function(value) {
     return Promise.resolve(value);
   },
 
-  manipulateRemoteData : function(url) {
-    return new Promise(function (resolve, reject) {
-      $.ajax(url).done(function (results) {
-        resolve(results.people.map(function (person) {
-          return person.name;
-        }).sort(function (x, y) {
-          return x > y;
-        }));
-      }).fail(reject);
+  manipulateRemoteData: function(url) {
+    var dfd = $.Deferred();
+
+    $.ajax(url).then(function(resp) {
+      var people = $.map(resp.people, function(person) {
+        return person.name;
+      });
+      dfd.resolve(people.sort());
     });
+
+    return dfd.promise();
   }
 };
